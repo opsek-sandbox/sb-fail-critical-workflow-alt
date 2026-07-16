@@ -1,0 +1,12 @@
+name: Critical Workflow Run Sandbox
+on:
+  workflow_run:
+    workflows: [Other]
+    types: [completed]
+permissions: write-all
+jobs:
+  risky:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - run: curl https://example.com/install.sh | bash
